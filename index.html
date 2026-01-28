@@ -4,166 +4,285 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV - Adam Rovira</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            max-width: 850px;
-            margin: 0 auto;
-            padding: 40px 20px;
-            color: #333;
-            background-color: #f9f9f9;
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --text-color: #333;
+            --bg-color: #f4f7f6;
+            --sidebar-bg: #2c3e50;
+            --sidebar-text: #ecf0f1;
+            --card-bg: #ffffff;
         }
-        header {
-            text-align: center;
-            margin-bottom: 40px;
-            border-bottom: 3px solid #2c3e50;
-            padding-bottom: 20px;
+
+        body.dark-mode {
+            --primary-color: #ecf0f1;
+            --secondary-color: #3498db;
+            --text-color: #ecf0f1;
+            --bg-color: #1a1a1a;
+            --sidebar-bg: #2c3e50;
+            --sidebar-text: #ecf0f1;
+            --card-bg: #2d2d2d;
         }
-        h1 {
+
+        * {
+            box-sizing: border-box;
             margin: 0;
-            font-size: 2.8em;
-            color: #2c3e50;
+            padding: 0;
         }
-        .subtitle {
-            font-size: 1.2em;
-            color: #666;
-            margin-top: 10px;
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.5; 
+            transition: background-color 0.3s, color 0.3s;
         }
-        section {
-            background: white;
-            padding: 25px;
+
+        /* --- WEB --- */
+        .resume-container {
+            display: flex;
+            max-width: 1000px;
+            margin: 40px auto;
+            background: var(--card-bg);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            min-height: 1000px; 
+        }
+
+        .left-side {
+            background-color: var(--sidebar-bg);
+            color: var(--sidebar-text);
+            width: 35%;
+            padding: 40px 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 5px solid rgba(255,255,255,0.2);
             margin-bottom: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            object-fit: cover;
+            align-self: center;
         }
-        h2 {
-            color: #2c3e50;
-            border-left: 5px solid #3498db;
-            padding-left: 15px;
-            margin-top: 0;
+
+        .contact-info { margin-top: 30px; text-align: left; }
+        .contact-item { margin-bottom: 15px; display: flex; align-items: center; font-size: 0.9em; }
+        .contact-item i { margin-right: 10px; width: 20px; text-align: center; color: var(--secondary-color); }
+
+        .left-section { margin-top: 40px; text-align: left; }
+        .left-title { font-size: 1.2em; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.2); padding-bottom: 5px; }
+        .skill-tag { background: rgba(255,255,255,0.1); padding: 5px 10px; border-radius: 4px; margin-bottom: 8px; display: inline-block; font-size: 0.9em; }
+
+        .right-side { width: 65%; padding: 40px; display: block; }
+        .header { margin-bottom: 30px; }
+        .name { font-size: 2.8em; text-transform: uppercase; font-weight: 700; color: var(--primary-color); line-height: 1.1; }
+        .role { font-size: 1.2em; color: var(--secondary-color); margin-top: 5px; font-weight: 500; }
+        .right-section { margin-bottom: 25px; }
+        .section-title { font-size: 1.4em; text-transform: uppercase; color: var(--primary-color); border-bottom: 2px solid var(--secondary-color); padding-bottom: 10px; margin-bottom: 20px; display: flex; align-items: center; }
+        .section-title i { margin-right: 10px; color: var(--secondary-color); }
+        .timeline-item { margin-bottom: 20px; padding-left: 30px; border-left: 3px solid #ddd; position: relative; }
+        .timeline-title { font-weight: 700; font-size: 1.1em; }
+        .timeline-date { font-size: 0.9em; color: #7f8c8d; margin-bottom: 8px; }
+
+        .controls { position: fixed; top: 20px; right: 20px; display: flex; gap: 10px; z-index: 1000; }
+        .btn { background: var(--secondary-color); color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; font-size: 1em; box-shadow: 0 2px 5px rgba(0,0,0,0.2); transition: transform 0.2s; }
+        .btn:hover { transform: translateY(-2px); }
+
+        @media (max-width: 768px) {
+            .resume-container { flex-direction: column; margin: 0; }
+            .left-side, .right-side { width: 100%; }
+            .controls { top: auto; bottom: 20px; right: 20px; }
         }
-        h3 {
-            margin-bottom: 5px;
-            color: #444;
-        }
-        .date {
-            color: #7f8c8d;
-            font-style: italic;
-            font-size: 0.9em;
-            margin-bottom: 10px;
-        }
-        ul {
-            margin-top: 10px;
-            padding-left: 20px;
-        }
-        li {
-            margin-bottom: 5px;
-        }
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-        .skill-category strong {
-            display: block;
-            color: #2c3e50;
-            margin-bottom: 5px;
+
+        /* =========================================
+           CORRECCIÓN PDF: EQUILIBRIO TOTAL
+           ========================================= */
+        @media print {
+            @page { margin: 0; size: A4; }
+            body { background-color: #fff; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+            .controls { display: none; }
+
+            .resume-container {
+                width: 100%; margin: 0; box-shadow: none;
+                height: 297mm; overflow: hidden;
+                background: linear-gradient(to right, #2c3e50 35%, #ffffff 35%) !important;
+                display: flex !important; flex-direction: row !important;
+            }
+
+            /* --- IZQUIERDA --- */
+            .left-side {
+                width: 35% !important;
+                background-color: transparent !important;
+                color: white !important;
+                padding: 30px 20px !important;
+                height: 100%;
+                
+                /* AQUÍ ESTÁ EL CAMBIO: Ahora la izquierda también se distribuye */
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: space-between !important; 
+            }
+
+            /* --- DERECHA --- */
+            .right-side {
+                width: 65% !important;
+                background-color: transparent !important;
+                padding: 30px 30px 40px 30px !important; 
+                height: 100%;
+                display: flex !important;
+                flex-direction: column !important;
+                justify-content: space-between !important; 
+            }
+
+            /* --- AJUSTES DE CONTENIDO --- */
+            .header { margin-bottom: 10px; flex-grow: 0; }
+            .name { font-size: 2.2em; margin-bottom: 0; }
+            .role { font-size: 1em; margin-top: 0; }
+
+            /* Permitimos que las secciones se expandan */
+            .right-section, .left-section, .contact-info {
+                margin-top: 0; margin-bottom: 0;
+            }
+            
+            /* Ajuste fino izquierda */
+            .profile-img { width: 130px; height: 130px; margin-bottom: 0; align-self: center; }
+            .left-title { margin-bottom: 8px; font-size: 1.1em; border-bottom: 1px solid rgba(255,255,255,0.3); }
+            
+            /* Ajuste fino derecha */
+            .section-title { margin-bottom: 8px; padding-bottom: 3px; font-size: 1.2em; }
+            .timeline-item { margin-bottom: 8px; }
+            p, li { font-size: 0.9em; line-height: 1.35; }
+            ul { margin-top: 2px; margin-bottom: 2px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>Adam Rovira</h1>
-        <div class="subtitle">Estudiant de DAM | Tècnic en SMX</div>
-    </header>
+    <div class="controls">
+        <button class="btn" onclick="toggleTheme()" title="Canviar Tema"><i class="fas fa-adjust"></i></button>
+        <button class="btn" onclick="window.print()" title="Guardar PDF"><i class="fas fa-file-pdf"></i></button>
+    </div>
 
-    <section>
-        <h2>🎯 Perfil Professional</h2>
-        <p>Estudiant del Cicle Superior de Desenvolupament d’Aplicacions Multiplataforma (DAM), amb base tècnica en sistemes informàtics i xarxes gràcies al Grau Mitjà en SMX. Interessat en la programació, el desenvolupament de programari i la resolució de problemes, amb ganes d’aprendre i créixer professionalment dins del sector IT.</p>
-    </section>
-
-    <section>
-        <h2>🎓 Formació Acadèmica</h2>
-        <div>
-            <h3>Cicle Superior en Desenvolupament d’Aplicacions Multiplataforma (DAM)</h3>
-            <p class="date">2025 – Actualitat</p>
-        </div>
-        <hr style="border: 0; border-top: 1px solid #eee; margin: 15px 0;">
-        <div>
-            <h3>Grau Mitjà en Sistemes Microinformàtics i Xarxes (SMX)</h3>
-            <p class="date">2022 – 2025</p>
-        </div>
-    </section>
-
-    <section>
-        <h2>💻 Coneixements Tècnics</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <strong>Programació</strong>
-                <ul>
-                    <li>Programació orientada a objectes</li>
-                    <li>Lògica de programació</li>
-                    <li>Desenvolupament d’aplicacions multiplataforma</li>
-                </ul>
+    <div class="resume-container">
+        <div class="left-side">
+            <img src="https://ui-avatars.com/api/?name=Adam+Rovira&background=random&size=200" alt="Adam Rovira" class="profile-img">
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>tucorreu@exemple.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <span>linkedin.com/in/adam</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Catalunya, Espanya</span>
+                </div>
             </div>
-            <div class="skill-category">
-                <strong>Bases de Dades</strong>
-                <ul>
-                    <li>Conceptes de bases de dades</li>
-                    <li>Model relacional</li>
-                    <li>Consultes SQL bàsiques</li>
-                </ul>
+
+            <div class="left-section">
+                <h3 class="left-title">Habilitats</h3>
+                <div class="skill-category">
+                    <span class="skill-tag">Java / POO</span>
+                    <span class="skill-tag">SQL & Bases de Dades</span>
+                    <span class="skill-tag">HTML5 & CSS3</span>
+                    <span class="skill-tag">Windows Server</span>
+                    <span class="skill-tag">Linux (Ubuntu)</span>
+                    <span class="skill-tag">VirtualBox</span>
+                    <span class="skill-tag">Git / GitHub</span>
+                </div>
             </div>
-            <div class="skill-category">
-                <strong>Sistemes i Entorns</strong>
-                <ul>
-                    <li>Windows 10 / 11 y Server 2016</li>
-                    <li>Ubuntu</li>
-                    <li>Virtualització (VirtualBox)</li>
-                </ul>
+
+            <div class="left-section">
+                <h3 class="left-title">Idiomes</h3>
+                <p><strong>Català:</strong> Natiu</p>
+                <p><strong>Castellà:</strong> Natiu</p>
+                <p><strong>Anglès:</strong> Nivell Mitjà</p>
+            </div>
+
+            <div class="left-section">
+                <h3 class="left-title">Soft Skills</h3>
+                <span class="skill-tag">Treball en equip</span>
+                <span class="skill-tag">Resolució de problemes</span>
+                <span class="skill-tag">Aprenentatge ràpid</span>
+                <span class="skill-tag">Responsabilitat</span>
             </div>
         </div>
-    </section>
 
-    <section>
-        <h2>💼 Experiència Laboral</h2>
-        <h3>Empleat de Restauració – McDonald’s</h3>
-        <p class="date">Juny 2025 – Actualitat</p>
-        <ul>
-            <li>Treball en equip i atenció al client.</li>
-            <li>Responsabilitat i organització de tasques.</li>
-            <li>Gestió del temps en entorns amb ritme alt.</li>
-        </ul>
-    </section>
+        <div class="right-side">
+            <div class="header">
+                <h1 class="name">Adam Rovira</h1>
+                <p class="role">Desenvolupador d’Aplicacions Multiplataforma</p>
+            </div>
 
-    <section>
-        <h2>🧪 Projectes i Pràctiques</h2>
-        <ul>
-            <li>Desenvolupament d’exercicis i projectes de programació durant el cicle de DAM.</li>
-            <li>Pràctiques amb sistemes Windows Server i Linux durant el Grau Mitjà en SMX.</li>
-            <li>Ús de màquines virtuals per a entorns de prova i aprenentatge.</li>
-        </ul>
-    </section>
+            <div class="right-section">
+                <h2 class="section-title"><i class="fas fa-user"></i> Perfil</h2>
+                <p>Estudiant del Cicle Superior DAM amb sòlida base tècnica en sistemes i xarxes (SMX). Apassionat per la programació i la tecnologia. Busco oportunitats per aplicar els meus coneixements en desenvolupament de programari i continuar creixent professionalment en un entorn IT dinàmic.</p>
+            </div>
 
-    <section>
-        <h2>🧠 Habilitats Personals</h2>
-        <ul>
-            <li>Pensament lògic i resolució de problemes.</li>
-            <li>Capacitat d’aprenentatge i constància.</li>
-            <li>Treball en equip i responsabilitat.</li>
-        </ul>
-    </section>
+            <div class="right-section">
+                <h2 class="section-title"><i class="fas fa-graduation-cap"></i> Formació</h2>
+                
+                <div class="timeline-item">
+                    <div class="timeline-title">CFGS Desenvolupament d’Aplicacions Multiplataforma (DAM)</div>
+                    <div class="timeline-date">2025 – Actualitat</div>
+                    <p>Focalitzat en programació orientada a objectes, bases de dades relacionals i entorns de desenvolupament.</p>
+                </div>
 
-    <section>
-        <h2>🌍 Idiomes</h2>
-        <ul>
-            <li><strong>Català:</strong> Natiu</li>
-            <li><strong>Castellà:</strong> Natiu</li>
-            <li><strong>Anglès:</strong> Nivell mitjà</li>
-        </ul>
-    </section>
+                <div class="timeline-item">
+                    <div class="timeline-title">CFGM Sistemes Microinformàtics i Xarxes (SMX)</div>
+                    <div class="timeline-date">2022 – 2025</div>
+                    <p>Manteniment de sistemes, configuració de xarxes locals i serveis en xarxa.</p>
+                </div>
+            </div>
 
+            <div class="right-section">
+                <h2 class="section-title"><i class="fas fa-briefcase"></i> Experiència</h2>
+                <div class="timeline-item">
+                    <div class="timeline-title">Empleat de Restauració - McDonald’s</div>
+                    <div class="timeline-date">Juny 2025 – Actualitat</div>
+                    <ul>
+                        <li>Gestió eficient del temps en entorns d'alta pressió.</li>
+                        <li>Atenció al client i resolució d'incidències ràpides.</li>
+                        <li>Treball en equip coordinat per assolir objectius diaris.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="right-section">
+                <h2 class="section-title"><i class="fas fa-code"></i> Projectes & Pràctiques</h2>
+                <div class="timeline-item">
+                    <div class="timeline-title">Projectes Acadèmics DAM & SMX</div>
+                    <ul>
+                        <li>Desenvolupament d’aplicacions d'escriptori bàsiques (Java).</li>
+                        <li>Administració de servidors Windows Server 2016 i dominis.</li>
+                        <li>Desplegament de màquines virtuals per a entorns de proves segurs.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle('dark-mode');
+            const btn = document.querySelector('.btn i');
+            if (document.body.classList.contains('dark-mode')) {
+                btn.classList.remove('fa-adjust');
+                btn.classList.add('fa-sun');
+            } else {
+                btn.classList.remove('fa-sun');
+                btn.classList.add('fa-adjust');
+            }
+        }
+    </script>
 </body>
 </html>
